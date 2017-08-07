@@ -243,6 +243,16 @@ export default class Session extends EventEmitter {
         });
     }
 
+    signEthMessage(
+        address_n: Array<number>,
+        message: string
+    ): Promise<MessageResponse<trezor.MessageSignature>> {
+        return this.typedCall('EthereumSignMessage', 'MessageSignature', {
+            address_n: address_n,
+            message: message,
+        });
+    }
+
     signIdentity(
         identity: trezor.Identity,
         challenge_hidden: string,
